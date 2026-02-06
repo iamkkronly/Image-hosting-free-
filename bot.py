@@ -22,6 +22,7 @@ from typing import Tuple
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import requests
+from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application,
@@ -31,15 +32,10 @@ from telegram.ext import (
     filters,
 )
 
-# ================== TELEGRAM APP CREDS ================== #
-# Not used by python-telegram-bot.
-# Present ONLY because you explicitly requested them.
-
-TELEGRAM_API_ID = 20110837
-TELEGRAM_API_HASH = "b9658b136c2b71af2bdb7497649ace5c"
+load_dotenv()
 
 # ================== IMGBB CONFIG ================== #
-IMGBB_API_KEY = "73491a641dbd274a32782b5bc1a88079"
+IMGBB_API_KEY = os.getenv("IMGBB_API_KEY")
 IMGBB_UPLOAD_URL = "https://api.imgbb.com/1/upload"
 
 # ================== BOT CONFIG ================== #
@@ -65,7 +61,7 @@ class PingHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/plain")
         self.end_headers()
-        self.wfile.write(b"Bot is alive ✅")
+        self.wfile.write("Bot is alive ✅".encode("utf-8"))
 
     def log_message(self, format, *args):
         return  # silence logs
@@ -181,6 +177,8 @@ async def handle_image(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def main():
     if not BOT_TOKEN:
         raise RuntimeError("BOT_TOKEN missing in environment")
+    if not IMGBB_API_KEY:
+        raise RuntimeError("IMGBB_API_KEY missing in environment")
 
     threading.Thread(target=start_ping_server, daemon=True).start()
 
