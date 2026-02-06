@@ -73,7 +73,7 @@ async def start_handler(client, message: Message):
     txt = (
         f"👋 **Hi {message.from_user.first_name}!**\n\n"
         "I'm a fast image uploader bot. Send me any **Photo** or **Image File**, "
-        "and I'll upload it to ImgBB and give you a direct link.\n\n"
+        "and I'll upload it and give you a direct link.\n\n"
         "🚀 *Supported formats:* JPG, PNG, WEBP, GIF"
     )
     await message.reply_text(txt, quote=True)
@@ -101,7 +101,7 @@ async def image_handler(client, message: Message):
         else:
             file_stream = file_path
             
-        await status_msg.edit_text("🚀 **Uploading to ImgBB...**")
+        await status_msg.edit_text("🚀 **Uploading...**")
         
         # Generate a distinct filename or ImgBB might get confused
         timestamp = message.date.timestamp()
