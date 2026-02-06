@@ -2,7 +2,7 @@
 
 # Telegram ImgBB Uploader Bot
 
-A high-performance Telegram bot that instantly uploads images to ImgBB and returns direct, public-accessible links. Built with **Python** and **Pyrogram** for speed and efficiency.
+A high-performance Telegram bot that instantly uploads images to ImgBB and returns direct, public-accessible links. Built with **Python** and **python-telegram-bot** for speed and efficiency.
 
 > **Copyright (c) 2026 Kaustav Ray**
 
@@ -10,9 +10,9 @@ A high-performance Telegram bot that instantly uploads images to ImgBB and retur
 
 ## 🚀 Features
 
-* **Instant Uploads:** Uses `aiohttp` for non-blocking, asynchronous uploads to ImgBB.
+* **Instant Uploads:** Asynchronous uploads to ImgBB.
 * **Smart Detection:** Automatically handles compressed Telegram photos and uncompressed files (Documents).
-* **Format Support:** JPG, PNG, WEBP, GIF.
+* **Format Support:** JPG, PNG, WEBP.
 * **User Friendly:** Returns a Direct Link, Thumbnail URL, and a "View Page" link.
 * **Interactive UI:** Inline buttons to open or share the image immediately.
 * **Production Ready:** Includes error handling, logging, and rate-limit protection.
@@ -22,9 +22,8 @@ A high-performance Telegram bot that instantly uploads images to ImgBB and retur
 Before you begin, ensure you have the following:
 
 1.  **Python 3.9+** installed.
-2.  **Telegram API Keys** (`API_ID` and `API_HASH`) from [my.telegram.org](https://my.telegram.org).
-3.  **Telegram Bot Token** from [@BotFather](https://t.me/BotFather).
-4.  **ImgBB API Key** from [api.imgbb.com](https://api.imgbb.com/).
+2.  **Telegram Bot Token** from [@BotFather](https://t.me/BotFather).
+3.  **ImgBB API Key** from [api.imgbb.com](https://api.imgbb.com/).
 
 ## 📥 Installation
 
@@ -47,9 +46,7 @@ Create a file named `.env` in the root directory and add your credentials. You c
 # .env file
 
 # Telegram Configs
-API_ID=12345678
-API_HASH=your_api_hash_here
-TELEGRAM_BOT_TOKEN=your_bot_token_here
+BOT_TOKEN=your_bot_token_here
 
 # ImgBB Config
 IMGBB_API_KEY=your_imgbb_key_here
